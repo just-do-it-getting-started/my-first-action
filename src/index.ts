@@ -9,6 +9,8 @@ export async function run(): Promise<void> {
   try {
     const ms: string = core.getInput('milliseconds')
 
+    core.debug('say hello')
+
     // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
     core.debug(`Waiting ${ms} milliseconds ...`)
 
@@ -19,6 +21,7 @@ export async function run(): Promise<void> {
 
     // Set outputs for other workflow steps to use
     core.setOutput('time', new Date().toTimeString())
+
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
